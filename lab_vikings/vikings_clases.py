@@ -62,17 +62,41 @@ class War:
     def viking_attack(self):
         anysaxon = random.randrange(len(self.saxon_army)) #ramdom.choise???
         anyviking = random.randrange(len(self.viking_army))
-        selectedaxon = self.saxon_army[anysaxon]
+        selectedsaxon = self.saxon_army[anysaxon]
         selectedviking = self.viking_army[anyviking]
 
 
-        pass
+        message = selectedsaxon.receive_damage(selectedviking.strength)
+        if message == "A Saxon has died in combat":
+            self.saxon_army.pop(anysaxon)
+        return message
+
     def saxon_attack(self):
-        pass
+        anysaxon = random.randrange(len(self.saxon_army)) #ramdom.choise???
+        anyviking = random.randrange(len(self.viking_army))
+        selectedsaxon = self.saxon_army[anysaxon]
+        selectedviking = self.viking_army[anyviking]
+
+
+        message = selectedviking.receive_damage(selectedsaxon.strength)
+        if message == "A Saxon has died in combat":
+            self.saxon_army.pop(anysaxon)
+        return message
+
     def show_status(self):
-        pass
-    """
- Now we get to the good stuff: WAR! Our War constructor function will allow us to have a Viking army and a Saxon army that battle each other.
+        if len(self.saxon_army) == 0:
+            return "Vikings have won the war of the century!"
+        elif len(self.viking_army) == 0:
+            return "Saxons have fought for their lives and survive another day..."
+        elif (len(self.viking_army) >= 1) and (len(self.saxon_army) >= 1):
+            return "Vikings and Saxons are still in the thick of battle."
+
+
+
+
+
+"""
+Now we get to the good stuff: WAR! Our War constructor function will allow us to have a Viking army and a Saxon army that battle each other.
 
 Modify the War constructor and add 5 methods to its prototype:
 
@@ -103,7 +127,8 @@ should add the received Saxon to the army
 shouldn't return anything
 
 viking_attack() method
-A Saxon (chosen at random) has their receive_damage() method called with the damage equal to the strength of a Viking (also chosen at random). This should only perform a single attack and the Saxon doesn't get to attack back.
+A Saxon (chosen at random) has their receive_damage() method called with the damage equal to the strength of a Viking (also chosen at random). 
+This should only perform a single attack and the Saxon doesn't get to attack back.
 
 should be a function
 should receive 0 arguments
@@ -127,4 +152,4 @@ if the Saxon array is empty, should return "Vikings have won the war of the cent
 if the Viking array is empty, should return "Saxons have fought for their lives and survive another day..."
 if there are at least 1 Viking and 1 Saxon, should return "Vikings and Saxons are still in the thick of battle."   
     
-    """
+"""
