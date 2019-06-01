@@ -60,7 +60,11 @@ class War:
         self.saxon_army.append(saxon)
 
     def viking_attack(self):
-        random.randrange(10)
+        anysaxon = random.randrange(len(self.saxon_army)) #ramdom.choise???
+        anyviking = random.randrange(len(self.viking_army))
+        selectedaxon = self.saxon_army[anysaxon]
+        selectedviking = self.viking_army[anyviking]
+
 
         pass
     def saxon_attack(self):
